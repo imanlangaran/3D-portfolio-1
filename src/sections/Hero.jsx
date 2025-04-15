@@ -1,8 +1,27 @@
-import Button from "../components/Button.jsx"
-import HeroExperience from "../components/HeroModels/HeroExperience.jsx"
-import { words } from "../constants/index.js"
+import AnimatedCounter from "../components/AnimatedCounter.jsx";
+import Button from "../components/Button.jsx";
+import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
+import { words } from "../constants/index.js";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
+  useGSAP(() => {
+    gsap.fromTo(
+      ".hero-text h1",
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.inOut",
+      }
+    );
+  });
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
@@ -18,11 +37,15 @@ const Hero = () => {
                 <span className="slide">
                   <span className="wrapper">
                     {words.map((word) => (
-                      <span key={word.text} className="flex items-center md:gap-3 gap-1 pb-1">
+                      <span
+                        key={word.text}
+                        className="flex items-center md:gap-3 gap-1 pb-1"
+                      >
                         <img
                           src={word.imgPath}
                           alt={word.text}
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50" />
+                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
+                        />
                         <span>{word.text}</span>
                       </span>
                     ))}
@@ -33,12 +56,14 @@ const Hero = () => {
               <h1>that Deliver Results</h1>
             </div>
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I'm Iman, a developer based in Mashhad, Iran, with a passion for code.
+              Hi, I'm Iman, a developer based in Mashhad, Iran, with a passion
+              for code.
             </p>
             <Button
               className="md:w-80 md:h-16 w-60 h-12"
               id="button"
-              text="See my Work" />
+              text="See my Work"
+            />
           </div>
         </header>
 
@@ -48,8 +73,10 @@ const Hero = () => {
           </div>
         </figure>
       </div>
-    </section>
-  )
-}
 
-export default Hero
+      <AnimatedCounter />
+    </section>
+  );
+};
+
+export default Hero;
