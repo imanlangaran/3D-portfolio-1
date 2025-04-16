@@ -20,6 +20,14 @@ const LogoSection = () => {
                 <img src={icon.imgPath} alt={icon.imgPath} />
               </div>
             ))}
+            {logoIconsList.map((icon) => (
+              <div
+                key={icon.imgPath}
+                className="flex-none flex-center marquee-item"
+              >
+                <img src={icon.imgPath} alt={icon.imgPath} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
