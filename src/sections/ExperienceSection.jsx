@@ -9,6 +9,8 @@ import GlowCard from "../components/GlowCard";
 gsap.registerPlugin(ScrollTrigger);
 
 const ExperienceSection = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
+
   useGSAP(() => {
     // Loop through each timeline card and animate them in
     // as the user scrolls to each card
@@ -106,7 +108,7 @@ const ExperienceSection = () => {
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
                     <div>
-                      <img src={card.imgPath} alt="exp-img" />
+                      <img src={`${baseUrl}${card.imgPath}`} alt="exp-img" />
                     </div>
                   </GlowCard>
                 </div>
@@ -118,7 +120,7 @@ const ExperienceSection = () => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo" />
+                        <img src={`${baseUrl}${card.logoPath}`} alt="logo" />
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>

@@ -1,9 +1,9 @@
 import React from "react";
 import { logoIconsList } from "../constants";
 
-// const LogoIcon
-
 const LogoSection = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
+
   return (
     <div className="md:my-20 my-10 relative">
       <div className="gradient-edge" />
@@ -17,7 +17,7 @@ const LogoSection = () => {
                 key={icon.imgPath}
                 className="flex-none flex-center marquee-item"
               >
-                <img src={icon.imgPath} alt={icon.imgPath} />
+                <img src={`${baseUrl}${icon.imgPath}`} alt={icon.imgPath} />
               </div>
             ))}
             {logoIconsList.map((icon) => (
@@ -25,7 +25,7 @@ const LogoSection = () => {
                 key={icon.imgPath}
                 className="flex-none flex-center marquee-item"
               >
-                <img src={icon.imgPath} alt={icon.imgPath} />
+                <img src={`${baseUrl}${icon.imgPath}`} alt={icon.imgPath} />
               </div>
             ))}
           </div>

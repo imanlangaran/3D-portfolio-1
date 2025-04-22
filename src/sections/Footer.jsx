@@ -1,7 +1,9 @@
-import React from 'react'
-import { socialImgs } from '../constants'
+import React from 'react';
+import { socialImgs } from '../constants';
 
 const Footer = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
+
   return (
     <footer className='footer'>
       <div className='footer-container'>
@@ -11,9 +13,8 @@ const Footer = () => {
 
         <div className='socials'>
           {socialImgs.map((img) => (
-            // <a className='icon' target='_blank' href={img.url} key={img.url}>
-            <a className='icon' target='_blank' href='#' key={img.url}>
-              <img src={img.imgPath} />
+            <a className='icon' target='_blank' href={img.url} key={img.url}>
+              <img src={`${baseUrl}${img.imgPath}`} alt="social-icon" />
             </a>
           ))}
         </div>
@@ -25,7 +26,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

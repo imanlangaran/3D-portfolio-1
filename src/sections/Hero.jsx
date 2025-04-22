@@ -6,6 +6,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Hero = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
+
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text h1",
@@ -25,7 +27,7 @@ const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="background" />
+        <img src={`${baseUrl}images/bg.png`} alt="background" />
       </div>
 
       <div className="hero-layout">
@@ -36,13 +38,13 @@ const Hero = () => {
                 Shaping
                 <span className="slide">
                   <span className="wrapper">
-                    {words.map((word) => (
+                    {words.map((word,i) => (
                       <span
-                        key={word.text}
+                        key={i}
                         className="flex items-center md:gap-3 gap-1 pb-1"
                       >
                         <img
-                          src={word.imgPath}
+                          src={`${baseUrl}${word.imgPath}`}
                           alt={word.text}
                           className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
                         />

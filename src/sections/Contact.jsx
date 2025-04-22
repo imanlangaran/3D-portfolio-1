@@ -4,6 +4,7 @@ import ContactExperience from '../components/ContactExperience';
 import emailjs from '@emailjs/browser'
 
 const Contact = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
   const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -96,7 +97,7 @@ const Contact = () => {
                     <div className='bg-circle' />
                     <p className='text'>{loading ? 'Sendig...' : 'Send Message'}</p>
                     <div className='arrow-wrapper'>
-                      <img src='/images/arrow-down.svg' alt='arrow' />
+                      <img src={`${baseUrl}images/arrow-down.svg`} alt='arrow' />
                     </div>
                   </div>
                 </button>

@@ -1,9 +1,9 @@
 // - Loads a '.glb' model (GLFT format)
 // - Adds basic lighting
-// - Applies enviroment relflections for realism
-// - wraps the model in a floatin animation
+// - Applies environment reflections for realism
+// - Wraps the model in a floating animation
 // - Optionally tweaks the material (like setting a white color on a specific mesh)
-// - Disables zoom using OrbitCotrols
+// - Disables zoom using OrbitControls
 
 import { Environment, Float, OrbitControls, useGLTF } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -11,23 +11,23 @@ import React, { useEffect } from 'react'
 import * as THREE from 'three'
 
 const TechIcon = ({ model }) => {
-
-  const scene = useGLTF(model.modelPath)
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
+  const scene = useGLTF(`${baseUrl}${model.modelPath}`); // Use baseUrl for the model path
 
   useEffect(() => {
     if (model.doWhite) {
       scene.scene.traverse((child) => {
-        child.material = new THREE.MeshStandardMaterial({ color: 'white' })
-      })
+        child.material = new THREE.MeshStandardMaterial({ color: 'white' });
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <Canvas>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
 
-      <Environment preset='city' />
+      <Environment preset="city" />
 
       <OrbitControls enableZoom={false} />
 
@@ -37,7 +37,7 @@ const TechIcon = ({ model }) => {
         </group>
       </Float>
     </Canvas>
-  )
-}
+  );
+};
 
-export default TechIcon
+export default TechIcon;

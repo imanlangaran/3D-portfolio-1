@@ -6,6 +6,7 @@ import React, { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const ShowCaseSection = () => {
+  const baseUrl = import.meta.env.BASE_URL; // Access the base URL
   const sectionRef = useRef(null);
   const project1Ref = useRef(null);
   const project2Ref = useRef(null);
@@ -51,7 +52,7 @@ const ShowCaseSection = () => {
         <div className="showcaselayout">
           <div className="first-project-wrapper" ref={project1Ref}>
             <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Ryde" />
+              <img src={`${baseUrl}images/project1.png`} alt="Ryde" />
             </div>
             <div className="text-content">
               <h2>
@@ -69,7 +70,7 @@ const ShowCaseSection = () => {
             <div className="project" ref={project2Ref}>
               <div className="image-wrapper bg-[#ffefdb]">
                 <img
-                  src="/images/project2.png"
+                  src={`${baseUrl}images/project2.png`}
                   alt="Library Management Platform"
                 />
               </div>
@@ -77,7 +78,7 @@ const ShowCaseSection = () => {
             </div>
             <div className="project" ref={project3Ref}>
               <div className="image-wrapper bg-[#ffefdb]">
-                <img src="/images/project3.png" alt="YC Directory" />
+                <img src={`${baseUrl}images/project3.png`} alt="YC Directory" />
               </div>
               <h2>Yc Directory - A Startup Showcase App</h2>
             </div>
